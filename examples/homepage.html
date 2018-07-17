@@ -146,17 +146,17 @@
             <div class="content">
               Log-in to your account
             </div>
-            
+
           </h2>
-          <div class="ui error message">
-              <div class="header">
-                There were some errors with your submission
-              </div>
-              <ul class="list">
-                <li>You must include both a upper and lower case letters in your password.</li>
-                <li>You need to select your home country.</li>
-              </ul>
+          <div class="ui error message hidden" id="login-error-info">
+            <div class="header">
+              There were some errors with your submission
             </div>
+            <ul class="list" id="login-error-info-list">
+              <li>You must include both a upper and lower case letters in your password.</li>
+              <li>You need to select your home country.</li>
+            </ul>
+          </div>
           <form class="ui form" id='login-form' method='post' action="login">
             <div class="ui stacked segment">
               <div class="field">
@@ -171,11 +171,11 @@
                   <input type="password" name="password" placeholder="Password">
                 </div>
               </div>
-              <div id="login" class="ui fluid large teal submit button">Log in</div>
+              <div id="login-button" class="ui fluid large teal submit button">Log in</div>
             </div>
-            
+
           </form>
-          
+
           <div class="ui message">
             New to us?
             <a href="#">Sign Up</a>
