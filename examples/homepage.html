@@ -5,11 +5,13 @@
   <!-- Standard Meta -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
   <!-- Site Properties -->
   <title>Homepage - Semantic</title>
-  <link rel="stylesheet" type="text/css" href="../dist/semantic.css">
+  <link rel="stylesheet" type="text/css" href="../dist/semantic.css" />
+  <link rel="stylesheet" type="text/css" href="assets/library/lightslider/css/lightslider.css" />
+  <link rel="stylesheet" type="text/css" href="components/slider.css">
 
   <style type="text/css">
     .hidden.menu {
@@ -105,12 +107,15 @@
         margin-top: 0.5em;
         font-size: 1.5em;
       }
+
     }
   </style>
 
   <script src="assets/library/jquery.min.js"></script>
+  <script src="assets/library/lightslider/js/lightslider.js"></script>
   <script src="../dist/semantic.js"></script>
-  <script src="assets/login.js"></script>
+  <script src="components/login.js"></script>
+  <script src="components/slider.js"></script>
   <script>
     $(document)
       .ready(function () {
@@ -136,6 +141,7 @@
 </head>
 
 <body>
+
   <div class="ui tiny modal">
     <div class="scrolling content">
       <div class="ui middle aligned center aligned grid">
@@ -171,7 +177,7 @@
                 </div>
               </div>
               <div id="login-button" class="ui fluid large teal submit button disabled">Log in</div>
-              
+
             </div>
 
           </form>
@@ -217,6 +223,7 @@
 
   <!-- Page Contents -->
   <div class="pusher">
+
     <div class="ui inverted vertical masthead center aligned segment">
 
       <div class="ui container">
@@ -246,7 +253,48 @@
       </div>
 
     </div>
+    <div class="ui divider"></div>
 
+    <div class="ui text container">
+      <div class="ui one cards centered">
+        <div class="ui card centered">
+          <div class="image">
+            <div class="ui blurring inverted dimmer">
+              <div class="content">
+                <div class="center">
+                  <div class="ui teal button">Add Friend</div>
+                </div>
+              </div>
+            </div>
+            <img src="assets/images/wireframe/image.png">
+          </div>
+        </div>
+      </div>
+      <div class="ui grid">
+        <div class="column">
+          <ul id="style-slider" class="style-slider">
+            <li>
+              <h3>1</h3>
+            </li>
+            <li>
+              <h3>2</h3>
+            </li>
+            <li>
+              <h3>3</h3>
+            </li>
+            <li>
+              <h3>4</h3>
+            </li>
+            <li>
+              <h3>5</h3>
+            </li>
+            <li>
+              <h3>6</h3>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
     <div class="ui vertical stripe segment">
       <div class="ui middle aligned stackable grid container">
         <div class="row">

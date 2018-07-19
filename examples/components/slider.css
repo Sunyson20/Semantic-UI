@@ -1,0 +1,17 @@
+/* .content-slider */
+
+#style-slider li {
+    background-color: rgba(204, 204, 191, 0.753);
+    text-align: center;
+    color: #FFF;
+}
+
+#style-slider h3 {
+    margin: 0;
+    padding: 70px 0;
+}
+
+#style-slider li.selected {
+    background-color: bisque;
+}
+

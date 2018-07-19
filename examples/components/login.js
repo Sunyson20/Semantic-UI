@@ -12,13 +12,13 @@ $(document)
                 onShow: function () {
                     console.info("Modal show");
                     $('#login-error-info').addClass('hidden');
-                    var email = $loginForm.form('get value','email');
+                    var email = $loginForm.form('get value', 'email');
                     console.log('email:' + email);
                     $loginForm.form('reset');
 
                     $loginForm.form('set value', 'email', email);
-                    
-                    
+
+
                 }
             })
             .modal('hide')
@@ -93,7 +93,6 @@ $(document)
                         email: "1@1",
                     }
                 }).done(function (response) {
-                    //alert("sss");
                     console.info(response);
                     $loginModal.modal('hide');
 
