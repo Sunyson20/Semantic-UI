@@ -58,7 +58,21 @@ $(document).ready(function () {
         freeMove: true,
         swipeThreshold: 40,
 
-        responsive: [],
+        responsive: [{
+            breakpoint: 960,
+            settings: {
+              item: 4,
+              slideMove: 1
+            }
+          },
+          {
+            breakpoint: 640,
+            settings: {
+              item: 3,
+              slideMove: 1
+            }
+          }
+        ],
 
         onBeforeStart: function (el) {},
         onSliderLoad: function (el) {},
@@ -76,8 +90,7 @@ $(document).ready(function () {
   });
 
   $('.card .dimmer')
-  .dimmer({
-    on: 'hover'
-  })
-;
+    .dimmer({
+      on: 'hover'
+    });
 });
