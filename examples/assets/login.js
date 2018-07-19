@@ -1,7 +1,10 @@
 $(document)
     .ready(function () {
         /** login form modal **/
-        $loginModal = $('.ui.tiny.modal');
+        let $loginModal = $('.ui.tiny.modal');
+        let $loginButton = $('#login-button');
+        let $loginForm = $('#login-form');
+
         $loginModal
             .modal({
                 // closable: false,
@@ -9,13 +12,17 @@ $(document)
                 onShow: function () {
                     console.info("Modal show");
                     $('#login-error-info').addClass('hidden');
+                    var email = $loginForm.form('get value','email');
+                    console.log('email:' + email);
+                    $loginForm.form('reset');
+
+                    $loginForm.form('set value', 'email', email);
+                    
+                    
                 }
             })
             .modal('hide')
             .modal('attach events', '#login-main', 'show');
-
-        let $loginButton = $('#login-button');
-        let $loginForm = $('#login-form');
 
         $loginForm
             .form({
@@ -39,7 +46,6 @@ $(document)
                 on: 'change',
                 onInvalid: function (element, errors) {
                     $loginButton.addClass('disabled');
-
                 },
                 onValid: function (element) {
                     if ($loginForm.form('is valid')) {
@@ -55,7 +61,7 @@ $(document)
         //     //event.preventDefault();
         // });
 
-        $('#login-form').submit(function () {
+        $loginForm.submit(function () {
             console.info("login submit");
             event.preventDefault(); //prevent default action 
             // var post_url = $(this).attr("action"); //get form action url
@@ -63,29 +69,28 @@ $(document)
             // var form_data = $(this).serialize(); //Encode form elements for submission
 
             // // get all the inputs into an array.
-            // var $inputs = $('#login-form :input');
-
+            let $inputs = $('#login-form :input');
             // // get an associative array of just the values.
-            // var values = {};
-            // $inputs.each(function () {
-            //     values[this.name] = $(this).val();
-            // });
+            var data = {};
+            $inputs.each(function () {
+                data[this.name] = $(this).val();
+            });
 
-            if ($('#login-form').form('is valid')) {
-                ajax();
+            if ($loginForm.form('is valid')) {
+                ajax(data);
             }
             return false;
         });
 
-        let ajax = function () {
+        let ajax = function (data) {
             $loginButton.addClass('loading disabled');
 
             $.ajax({
                     url: "https://reqres.in/api/login",
                     type: "POST",
+                    // data: data
                     data: {
-                        "email": "peter@klaven",
-                        "password": "something"
+                        email: "1@1",
                     }
                 }).done(function (response) {
                     //alert("sss");
