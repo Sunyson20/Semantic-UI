@@ -256,19 +256,25 @@
     <div class="ui divider"></div>
 
     <div class="ui text container">
-      <div class="ui one cards centered">
-        <div class="ui card centered">
-          <div class="image">
-            <div class="ui blurring inverted dimmer">
-              <div class="content">
-                <div class="center">
-                  <div class="ui teal button">Add Friend</div>
+      
+        <div class="ui one cards centered">
+          <div class="ui card centered dashed" id="image-card">
+
+            <div class="image">
+              <div class="ui blurring inverted dimmer">
+                <div class="content">
+                  <div class="center">
+                    <div class="ui teal submit button" id="image-upload">Add Friend</div>
+                  </div>
                 </div>
               </div>
+              <img src="assets/images/wireframe/image.png">
             </div>
-            <img src="assets/images/wireframe/image.png">
+            <form id="image-form">
+                <input type="file" id="file" name="file" style="display:none" />
+            </form>
           </div>
-        </div>
+        
       </div>
       <div class="ui grid">
         <div class="column">

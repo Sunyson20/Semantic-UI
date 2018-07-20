@@ -1,5 +1,8 @@
 $(document).ready(function () {
 
+  $imageForm = $('#image-form');
+  $imageUpload = $('#image-upload');
+
   // load all li elements befor initialize lightslider
   $.ajax({
       url: "https://reqres.in/api/unknown",
@@ -64,7 +67,7 @@ $(document).ready(function () {
     });
 
 
-  $("#style-slider").on('click', 'li', function (e) {
+  $("#style-slider").on('dblclick', 'li', function (e) {
     console.log(e);
     console.log($(this).text());
     $(this).parent().find('li').removeClass('selected');
@@ -76,5 +79,15 @@ $(document).ready(function () {
   $('.card .dimmer')
     .dimmer({
       on: 'hover'
+    });
+
+    $imageUpload.on('click', function(event){
+      event.preventDefault();
+      console.log('image upload');
+    });
+
+    $imageForm.submit(function () {
+      event.preventDefault();
+      console.log("image form");
     });
 });
