@@ -42,7 +42,7 @@ $(document).ready(function () {
         prevHtml: '',
         nextHtml: '',
 
-        enableTouch: false,
+        enableTouch: true,
         enableDrag: true,
         freeMove: true,
         swipeThreshold: 40,
