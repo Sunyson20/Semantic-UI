@@ -7,7 +7,9 @@ $(document)
 
         $loginModal
             .modal({
-                // closable: false,
+                closable: true,
+                context: '#header',  //work around a bug, <body dimmable> not work no mobile
+                observeChanges: true,
                 inverted: true,
                 onShow: function () {
                     console.info("Modal show");
@@ -21,7 +23,7 @@ $(document)
 
                 }
             })
-            .modal('hide')
+            // .modal('hide')
             .modal('attach events', '#login-main', 'show');
 
         $loginForm

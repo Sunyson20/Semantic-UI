@@ -222,9 +222,9 @@
 
 
   <!-- Page Contents -->
-  <div class="pusher">
+  <div class="pusher" id="pusher">
 
-    <div class="ui inverted vertical masthead center aligned segment">
+    <div class="ui inverted vertical masthead center aligned segment" id="header">
 
       <div class="ui container">
         <div class="ui large secondary inverted pointing menu">
@@ -256,25 +256,26 @@
     <div class="ui divider"></div>
 
     <div class="ui text container">
-      
-        <div class="ui one cards centered">
-          <div class="ui card centered dashed" id="image-card">
 
-            <div class="image">
-              <div class="ui blurring inverted dimmer">
-                <div class="content">
-                  <div class="center">
-                    <div class="ui teal submit button" id="image-upload">Add Friend</div>
-                  </div>
-                </div>
+      <div class="ui one cards centered">
+        <div class="ui card centered dashed" id="image-card">
+
+          <div class="image">
+            <div class="ui blurring inverted dimmer">
+
+              <div class="ui action input center">
+                <button class="ui teal large button" id="image-upload">
+                  <i class="icon cloud upload"></i>
+                  Upload File
+                </button>
+                <input type="file" name="File" style="display: none!important;" />
               </div>
-              <img src="assets/images/wireframe/image.png">
+
             </div>
-            <form id="image-form">
-                <input type="file" id="file" name="file" style="display:none" />
-            </form>
+            <img src="assets/images/wireframe/image.png">
           </div>
-        
+        </div>
+
       </div>
       <div class="ui grid">
         <div class="column">

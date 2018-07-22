@@ -62,7 +62,7 @@ $(document).ready(function () {
             }
           }
         ],
-        
+
       });
     });
 
@@ -81,13 +81,23 @@ $(document).ready(function () {
       on: 'hover'
     });
 
-    $imageUpload.on('click', function(event){
-      event.preventDefault();
-      console.log('image upload');
-    });
+  $imageUpload.on('click', function (event) {
+    //event.preventDefault();
+    console.log('image upload');
+    // no work for the next input file element
+    $imageUpload.next('input:file').click();
+    // $imageUpload.parent().click();
+  });
 
-    $imageForm.submit(function () {
-      event.preventDefault();
-      console.log("image form");
-    });
+  const maxFileSize = 1* 1024 *1024;
+  $imageUpload.siblings('input:file').on('change', function(e){
+    console.log("file input clicked.");
+    var name = e.target.files[0].name;
+    var size = e.target.files[0].size;
+    console.log(name + ":" + size);
+    if(size > maxFileSize){
+      console.info("ERROR", "File size overflow.");
+    }
+  });
+
 });
