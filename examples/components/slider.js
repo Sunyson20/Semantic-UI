@@ -1,7 +1,9 @@
 $(document).ready(function () {
+  //TODO cross domain
+  const uploadUrl = "http://localhost:3000/upload";
 
-  $imageForm = $('#image-form');
-  $imageUpload = $('#image-upload');
+  $imageUploadForm = $('#image-upload-form');
+  $imageUploadButton = $('#image-upload-button');
 
   // load all li elements befor initialize lightslider
   $.ajax({
@@ -18,7 +20,7 @@ $(document).ready(function () {
       console.log(response);
     })
     .always(function (response) {
-      console.info("Always...")
+      console.info("Slider Always...")
       $("#style-slider").lightSlider({
         item: 4,
         autoWidth: false,
@@ -81,22 +83,70 @@ $(document).ready(function () {
       on: 'hover'
     });
 
-  $imageUpload.on('click', function (event) {
-    //event.preventDefault();
+
+  $imageUploadButton.on('click', function (event) {
+    event.preventDefault();
     console.log('image upload');
     // no work for the next input file element
-    $imageUpload.next('input:file').click();
-    // $imageUpload.parent().click();
+    $imageUploadButton.next('input:file').click();
+    // $imageUploadButton.parent().click();
   });
 
-  const maxFileSize = 1* 1024 *1024;
-  $imageUpload.siblings('input:file').on('change', function(e){
+  const maxFileSize = 1 * 1024 * 1024;
+  $imageUploadButton.next('input:file').on('change', function (event) {
+    event.preventDefault();
     console.log("file input clicked.");
-    var name = e.target.files[0].name;
-    var size = e.target.files[0].size;
+    var name = event.target.files[0].name;
+    var size = event.target.files[0].size;
+    var file = event.target.files[0];
     console.log(name + ":" + size);
-    if(size > maxFileSize){
+    if (size > maxFileSize) {
       console.info("ERROR", "File size overflow.");
+      // TODO tip max size exceed
+    } else {
+      var formData = new FormData();
+      formData.append('file', file);
+      console.log('formData:',formData);
+      $.ajax({
+        xhr: function () {
+          var progress = $('.progress'),
+            xhr = $.ajaxSettings.xhr();
+
+          progress.show();
+
+          xhr.upload.onprogress = function (ev) {
+            if (ev.lengthComputable) {
+              var percentComplete = parseInt((ev.loaded / ev.total) * 100);
+              progress.val(percentComplete);
+              if (percentComplete === 100) {
+                progress.hide().val(0);
+              }
+            }
+          };
+
+          return xhr;
+        },
+        url: uploadUrl,
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        cache: false,
+        processData: false,
+        crossDomain: true,
+        success: function (data, status, xhr) {
+          console.log('Upload seccess.', data);
+          console.log('status.', status);
+          console.log('xhr', xhr);
+        },
+        error: function (xhr, status, error) {
+          console.log('Upload error.', error, ',data:', xhr.data);
+          
+        }
+      }).done(function(response){
+
+      }).fail(function(response){
+
+      });
     }
   });
 

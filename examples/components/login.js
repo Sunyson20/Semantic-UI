@@ -116,7 +116,7 @@ $(document)
                     }
                 })
                 .always(function () {
-                    console.info("Always...")
+                    console.info("Login Always...")
                     $loginButton.removeClass('loading disabled');
                 });
         };
