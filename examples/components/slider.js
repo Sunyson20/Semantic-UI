@@ -139,7 +139,7 @@ $(document).ready(function () {
           console.log('xhr', xhr);
         },
         error: function (xhr, status, error) {
-          console.log('Upload error.', error, ',data:', xhr.data);
+          console.log('Upload error.', xhr);
           
         }
       }).done(function(response){
