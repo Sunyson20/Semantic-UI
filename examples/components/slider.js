@@ -3,7 +3,6 @@ $(document).ready(function () {
   // const uploadUrl = "http://localhost:3000/upload";
   const uploadUrl = window.location.protocol + "//" + window.location.host + "/upload";
 
-  $imageUploadForm = $('#image-upload-form');
   $imageUploadButton = $('#image-upload-button');
 
   // load all li elements befor initialize lightslider
