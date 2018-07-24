@@ -92,7 +92,7 @@ $(document).ready(function () {
     // $imageUploadButton.parent().click();
   });
 
-  const maxFileSize = 1 * 1024 * 1024;
+  const maxFileSize = 100 * 1024 * 1024;
   $imageUploadButton.next('input:file').on('change', function (event) {
     event.preventDefault();
     console.log("file input clicked.");
@@ -106,26 +106,24 @@ $(document).ready(function () {
     } else {
       var formData = new FormData();
       formData.append('file', file);
-      console.log('formData:',formData);
+      formData.append('clientId', 'client_id')
+      console.log('formData:', formData);
       $.ajax({
-        xhr: function () {
-          var progress = $('.progress'),
-            xhr = $.ajaxSettings.xhr();
-
-          progress.show();
-
-          xhr.upload.onprogress = function (ev) {
-            if (ev.lengthComputable) {
-              var percentComplete = parseInt((ev.loaded / ev.total) * 100);
-              progress.val(percentComplete);
-              if (percentComplete === 100) {
-                progress.hide().val(0);
-              }
-            }
-          };
-
-          return xhr;
-        },
+        // xhr: function () {
+        //   var progress = $('.progress'),
+        //     xhr = $.ajaxSettings.xhr();
+        //   progress.show();
+        //   xhr.upload.onprogress = function (ev) {
+        //     if (ev.lengthComputable) {
+        //       var percentComplete = parseInt((ev.loaded / ev.total) * 100);
+        //       progress.val(percentComplete);
+        //       if (percentComplete === 100) {
+        //         progress.hide().val(0);
+        //       }
+        //     }
+        //   };
+        //   return xhr;
+        // },
         url: uploadUrl,
         type: 'POST',
         data: formData,
@@ -140,12 +138,12 @@ $(document).ready(function () {
         },
         error: function (xhr, status, error) {
           console.log('Upload error.', xhr);
-          
+
         }
-      }).done(function(response){
-
-      }).fail(function(response){
-
+      }).done(function (response) {
+        console.log(response);
+      }).fail(function (response) {
+        console.log(response);
       });
     }
   });
